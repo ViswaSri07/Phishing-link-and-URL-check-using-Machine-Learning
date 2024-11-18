@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PhishDetector</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="static/assets/img/logo.png" rel="icon">
+  <link href="static/assets/img/logo.png" rel="apple-touch-icon">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top py-3">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <a href="{{ url_for('home') }}" class="flex items-center">
+          <img src="static/assets/img/logo.png" class="mr-3 h-6 sm:h-9" alt="PhishDetector Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap hover:text-green-700">PhishDetector</span>
+        </a>
+        <div class="flex items-center lg:order-2">
+          <a href="#"
+            class="hover:text-white text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Download
+            Guide</a>
+          <button data-collapse-toggle="mobile-menu-2" type="button"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="mobile-menu-2" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <li>
+              <a href="{{ url_for('home') }}"
+                class="block py-2 pr-4 pl-3 text-gray-700 rounded bg-green-700 lg:hover:text-green-700 lg:bg-transparent lg:text-green-700 lg:p-0"
+                aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-700 lg:p-0">About</a>
+            </li>
+            <li class="relative group">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar1"
+                class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-green-700 md:p-0 font-medium flex items-center justify-between w-full md:w-auto">Report
+                Phishing Cases <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg></button>
+
+              <div id="dropdownNavbar1"
+                class="hidden bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow my-4 w-44">
+                <ul class="py-1" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en" target="_blank"
+                      class="hover:text-green-700 text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Google Safe
+                      Browsing</a>
+                  </li>
+                  <li>
+                    <a href="https://support.google.com/websearch/answer/106318" target="_blank"
+                      class="hover:text-green-700 text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Google
+                      Support</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="relative group">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar2"
+                class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-green-700 md:p-0 font-medium flex items-center justify-between w-full md:w-auto">Take
+                Phishing Quiz <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg></button>
+
+              <div id="dropdownNavbar2"
+                class="hidden bg-white text-base z-10 list-none divide-y divide-gray-100 rounded shadow my-4 w-44">
+                <ul class="py-1" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="https://www.phishingbox.com/phishing-iq-test" target="_blank"
+                      class="hover:text-green-700 text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Phishingbox</a>
+                  </li>
+                  <li>
+                    <a href="https://www.intradyn.com/phishing-quiz/" target="_blank"
+                      class="hover:text-green-700 text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Intradyn</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li>
+              <a href="#"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-700 lg:p-0"
+                rel="no-opener no-referrer">Usecases</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="flex items-center min-h-screen justify-center bg-white">
+    <div class="mx-auto max-w-[43rem] text-center" data-aos="fade-up">
+      <p class="text-2xl font-medium leading-8 text-green-600/95">FAKE WEBSITE DETECTION</p>
+      <form action="/result" method="POST" role="form" class="form">
+        <div class="row no-gutters my-4">
+          <div class="col-md-6 form-group pr-md-1">
+            <input type="url" id="name" name="name"
+              class="form-control bg-white-50 border border-white-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+              placeholder="Enter a URL link in format http or https" required />
+          </div>
+        </div>
+        <div>
+          <button
+            class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+            type="submit">Scan URL</button>
+        </div>
+        <p>
+          {% if name %}
+          <b>
+            <p>{{name[0]}}</p>
+          </b>
+        <h2 style="color:blue;">Website is {{name[1]}} to use</h2><br>
+        {% if name[3] %}
+        <button class="button1" onclick="window.open('{{name[0]}}')" target="_blank">{{name[2]}}</button><br>
+        {% else %}
+        <button class="button2" onclick="window.open('{{name[0]}}')" target="_blank">{{name[2]}}</button><br>
+        {% endif %}
+        {% endif %}
+        </p>
+      </form>
+      <img src="static\assets\img\phishing.png" class="img-fluid hero-img" alt="" data-aos="zoom-in"
+        data-aos-delay="150"><br><br><br>
+    </div>
+  </section>
+
+  <a href="#" class="back-to-top">
+    <i class="icofont-simple-up"></i>
+  </a>
+
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
+  <script>
+    function scrolldiv() {
+      var elem = document.getElementById("about");
+      elem.scrollIntoView();
+    }
+  </script>
+
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
